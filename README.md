@@ -8,13 +8,17 @@ Este repositório serve como um template e base de estudo para os mentorados da 
 
 Para rodar este projeto localmente, siga os passos abaixo:
 
-1.  **Clone o repositório:**
+1.  **Baixe o template:**
+    Você pode baixar este repositório como um arquivo `.zip` diretamente do GitHub. Na página principal do repositório, clique no botão verde "Code" e selecione "Download ZIP". Descompacte o arquivo em uma pasta de sua preferência.
+
+2.  **Clone o repositório (alternativa):**
+    Se preferir usar Git, clone o repositório:
     ```bash
     git clone [URL_DO_SEU_REPOSITORIO]
     cd next-template # ou o nome da sua pasta
     ```
 
-2.  **Instale as dependências:**
+3.  **Instale as dependências:**
     ```bash
     npm install
     # ou
@@ -25,7 +29,7 @@ Para rodar este projeto localmente, siga os passos abaixo:
     bun install
     ```
 
-3.  **Configure as variáveis de ambiente:**
+4.  **Configure as variáveis de ambiente:**
     Crie um arquivo `.env.local` na raiz do projeto e adicione as seguintes variáveis:
 
     ```
@@ -43,7 +47,7 @@ Para rodar este projeto localmente, siga os passos abaixo:
     *   `NEXT_PUBLIC_OPENAI_WORKFLOW_ID`: O ID do seu workflow do ChatKit, obtido na plataforma OpenAI.
     *   As demais variáveis são para customização do ChatKit e da interface.
 
-4.  **Execute o servidor de desenvolvimento:**
+5.  **Execute o servidor de desenvolvimento:**
     ```bash
     npm run dev
     # ou
