@@ -82,11 +82,20 @@ export default {
   				to: {
   					height: '0'
   				}
-  			}
+  			},
+            'glow': {
+                '0%, 100%': {
+                    'box-shadow': '0 0 0px 0px rgba(59, 130, 246, 0.4)', // blue-500 with 40% opacity
+                },
+                '50%': {
+                    'box-shadow': '0 0 15px 5px rgba(59, 130, 246, 0.8)', // stronger glow
+                }
+            }
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+            'glow': 'glow 2s ease-in-out infinite'
   		}
   	}
   },

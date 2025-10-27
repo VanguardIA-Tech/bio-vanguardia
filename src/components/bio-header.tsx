@@ -6,7 +6,7 @@ import Image from "next/image";
 export function BioHeader() {
   return (
     <header className="flex flex-col items-center text-center p-8">
-      <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-4 overflow-hidden">
+      <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-4 overflow-hidden border-2 border-blue-500 animate-glow">
         <Image
           src="/vanguardia-logo.png"
           alt="Vanguardia Logo"
