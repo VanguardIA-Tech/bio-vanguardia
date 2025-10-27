@@ -31,8 +31,8 @@ export function ChatKitProvider() {
     if (!window.APP_CONFIG) {
       window.APP_CONFIG = {
         WORKFLOW_ID: (process.env.NEXT_PUBLIC_OPENAI_WORKFLOW_ID as string) || "wf_COLE_SEU_ID_AQUI",
-        BRAND_NAME: (process.env.NEXT_PUBLIC_BRAND_NAME as string) || "Do It Hub",
-        BRAND_PRIMARY: (process.env.NEXT_PUBLIC_BRAND_PRIMARY as string) || "#F97316",
+        BRAND_NAME: (process.env.NEXT_PUBLIC_BRAND_NAME as string) || "Vanguardia",
+        BRAND_PRIMARY: (process.env.NEXT_PUBLIC_BRAND_PRIMARY as string) || "#2563EB", // Um tom de azul
         WELCOME_MESSAGE: (process.env.NEXT_PUBLIC_WELCOME_MESSAGE as string) || "Olá! Como posso te ajudar hoje?",
         CHAT_MODE: ((process.env.NEXT_PUBLIC_CHAT_MODE as any) || "floating") as 'floating' | 'embedded',
         THEME: {
@@ -107,7 +107,7 @@ export function ChatKitProvider() {
         shade: 4
       },
       accent: {
-        primary: '#ffffff',
+        primary: CFG.BRAND_PRIMARY, // Usar a cor primária definida
         level: 1
       },
       surface: {

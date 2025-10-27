@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Do It Hub Bio Site",
-  description: "Mini site de bio para Do It Hub",
+  title: "Vanguardia Bio Site",
+  description: "Mini site de bio para Vanguardia",
 };
 
 export default function RootLayout({

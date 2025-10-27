@@ -14,8 +14,8 @@ export function BioSocialButton({ icon: Icon, href, className, ...props }: BioSo
       variant="outline"
       size="icon"
       className={cn(
-        "rounded-full w-10 h-10 bg-orange-500/10 border-orange-500 text-orange-500 transition-colors duration-200",
-        "hover:bg-orange-500 hover:text-white", // Adicionado hover com fundo laranja sólido e texto branco
+        "rounded-full w-10 h-10 bg-blue-500/10 border-blue-500 text-blue-500 transition-colors duration-200",
+        "hover:bg-blue-500 hover:text-white",
         className
       )}
       {...props}
