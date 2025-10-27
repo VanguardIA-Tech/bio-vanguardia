@@ -7,7 +7,7 @@
 @layer base {
   :root {
 
-    --background: 0 0% 100%;
+    --background: 0 0% 100%; /* Fundo branco para o tema claro */
 
     --foreground: 0 0% 3.9%;
 
@@ -75,9 +75,9 @@
     --sidebar-ring: 217.2 91.2% 59.8%}
   .dark {
 
-    --background: 0 0% 3.9%;
+    --background: 0 0% 100%; /* Fundo branco para o tema escuro também */
 
-    --foreground: 0 0% 98%;
+    --foreground: 0 0% 3.9%; /* Mantendo o foreground escuro para contraste */
 
     --card: 0 0% 3.9%;
 
@@ -149,9 +149,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: radial-gradient(at bottom, hsl(var(--chart-1)) 0%, transparent 50%);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center bottom;
+    /* Removido o background-image para deixar o fundo branco */
   }
 }
