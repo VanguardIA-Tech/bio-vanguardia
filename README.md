@@ -1,24 +1,64 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Sobre este Repositório
+
+Este repositório serve como um template e base de estudo para os mentorados da Vanguardia. Ele demonstra como integrar e utilizar o ChatKit da OpenAI em um aplicativo, site ou landing page, oferecendo um ponto de partida prático para o desenvolvimento de soluções interativas com IA. Sinta-se à vontade para explorar, modificar e adaptar este código para seus próprios projetos.
+
 ## Getting Started
 
-First, run the development server:
+Para rodar este projeto localmente, siga os passos abaixo:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1.  **Clone o repositório:**
+    ```bash
+    git clone [URL_DO_SEU_REPOSITORIO]
+    cd next-template # ou o nome da sua pasta
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    # ou
+    yarn install
+    # ou
+    pnpm install
+    # ou
+    bun install
+    ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3.  **Configure as variáveis de ambiente:**
+    Crie um arquivo `.env.local` na raiz do projeto e adicione as seguintes variáveis:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    ```
+    OPENAI_API_KEY=sua_chave_api_openai
+    NEXT_PUBLIC_OPENAI_WORKFLOW_ID=seu_workflow_id_chatkit
+    NEXT_PUBLIC_BRAND_NAME="Vanguardia"
+    NEXT_PUBLIC_BRAND_PRIMARY="#2563EB"
+    NEXT_PUBLIC_WELCOME_MESSAGE="Olá! Como posso te ajudar hoje?"
+    NEXT_PUBLIC_CHAT_MODE="floating" # ou "embedded"
+    NEXT_PUBLIC_THEME_COLORSCHEME="dark" # ou "light"
+    NEXT_PUBLIC_THEME_RADIUS="pill" # ou "round", "sharp"
+    NEXT_PUBLIC_THEME_DENSITY="normal" # ou "compact"
+    ```
+    *   `OPENAI_API_KEY`: Sua chave de API da OpenAI.
+    *   `NEXT_PUBLIC_OPENAI_WORKFLOW_ID`: O ID do seu workflow do ChatKit, obtido na plataforma OpenAI.
+    *   As demais variáveis são para customização do ChatKit e da interface.
+
+4.  **Execute o servidor de desenvolvimento:**
+    ```bash
+    npm run dev
+    # ou
+    yarn dev
+    # ou
+    pnpm dev
+    # ou
+    bun dev
+    ```
+
+    Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado. O aplicativo será recarregado automaticamente conforme você edita os arquivos.
+
+Você pode começar a editar a página modificando `app/page.tsx`. A página é atualizada automaticamente conforme você edita o arquivo.
+
+Este projeto usa [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) para otimizar e carregar automaticamente [Geist](https://vercel.com/font), uma nova família de fontes para Vercel.
 
 ## Learn More
 
