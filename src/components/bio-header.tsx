@@ -17,7 +17,7 @@ export function BioHeader() {
       </div>
       <h1 className="text-2xl font-bold mb-2 text-foreground">Vanguardia</h1>
       <p className="text-muted-foreground max-w-md mb-2">
-        Liderando o futuro com inovação e excelência.
+        Liderando o futuro com inovação, Inteligência Artificial e eficiência.
       </p>
       <p className="text-muted-foreground text-sm mb-6">
         Rua da Inovação, 123 — Centro, Cidade/Estado
