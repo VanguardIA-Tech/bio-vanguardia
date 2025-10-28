@@ -33,21 +33,52 @@ export function ChatKitEmbed() {
 
       const chatKitConfig = {
         theme: {
-          colorScheme: "dark",
-          radius: "round",
-        },
-        header: {
-          title: { text: "Assistente Virtual" },
-        },
-        startScreen: {
-          greeting: "Olá! Como posso te ajudar hoje?",
-          prompts: [],
-        },
-        composer: {
-          attachments: {
-            enabled: true,
-          },
-        },
+    colorScheme: 'dark',
+    radius: 'pill',
+    density: 'normal',
+    color: {
+      grayscale: {
+        hue: 25,
+        tint: 8
+      },
+      accent: {
+        primary: '#f56e00',
+        level: 1
+      }
+    },
+    typography: {
+      baseSize: 16,
+      fontFamily: '"OpenAI Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif',
+      fontFamilyMono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace',
+      fontSources: [
+        {
+          family: 'OpenAI Sans',
+          src: 'https://cdn.openai.com/common/fonts/openai-sans/v2/OpenAISans-Regular.woff2',
+          weight: 400,
+          style: 'normal',
+          display: 'swap'
+        }
+      // ...and 7 more font sources
+      ]
+    }
+  },
+  composer: {
+    attachments: {
+      enabled: false
+    },
+  },
+  startScreen: {
+    greeting: '',
+    prompts: [
+      {
+        icon: 'circle-question',
+        label: 'What is ChatKit?',
+        prompt: 'What is ChatKit?'
+      }
+      // ...and 4 more prompts
+    ],
+  },
+        
       };
 
       chatEl.setOptions({
