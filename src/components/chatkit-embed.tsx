@@ -19,35 +19,34 @@ export function ChatKitEmbed() {
 
       await customElements.whenDefined("openai-chatkit");
 
-      if (document.getElementById("chat-container")?.querySelector("openai-chatkit")) {
+      if (document.querySelector("openai-chatkit")) {
         return;
       }
 
       const chatEl = document.createElement("openai-chatkit") as ChatKitElement;
       chatEl.style.display = "block";
       chatEl.style.width = "100%";
-      chatEl.style.height = "420px";
+      chatEl.style.minHeight = "400px";
       chatEl.style.borderRadius = "1rem";
       chatEl.style.overflow = "hidden";
+      chatEl.style.backgroundColor = "rgba(15, 23, 42, 0.6)";
 
       const chatKitConfig = {
         theme: {
           colorScheme: "dark",
-          radius: "pill",
-          color: {
-            accent: {
-              primary: process.env.NEXT_PUBLIC_BRAND_PRIMARY || '#2563EB',
-            }
-          }
+          radius: "round",
+        },
+        header: {
+          title: { text: "Assistente Virtual" },
+        },
+        startScreen: {
+          greeting: "Olá! Como posso te ajudar hoje?",
+          prompts: [],
         },
         composer: {
           attachments: {
-            enabled: false
+            enabled: true,
           },
-        },
-        startScreen: {
-          greeting: process.env.NEXT_PUBLIC_WELCOME_MESSAGE || 'Olá! Como posso te ajudar hoje?',
-          prompts: [],
         },
       };
 
@@ -82,7 +81,6 @@ export function ChatKitEmbed() {
 
       const container = document.getElementById("chat-container");
       if (container) {
-        container.innerHTML = '';
         container.appendChild(chatEl);
       } else {
         console.error("O container com id 'chat-container' não foi encontrado no DOM.");
@@ -95,7 +93,7 @@ export function ChatKitEmbed() {
   return (
     <div
       id="chat-container"
-      className="relative w-full rounded-2xl border border-slate-700/60 bg-slate-900/50 backdrop-blur-sm shadow-lg overflow-hidden"
+      className="relative w-full min-h-[420px] rounded-2xl border border-slate-700/60 bg-slate-900/50 backdrop-blur-sm shadow-lg"
     />
   );
 }
