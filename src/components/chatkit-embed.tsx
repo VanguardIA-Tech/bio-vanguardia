@@ -93,7 +93,7 @@ export function ChatKitEmbed() {
   return (
     <div
       id="chat-container"
-      className="relative w-full min-h-[420px] rounded-2xl border border-slate-700/60 bg-slate-900/50 backdrop-blur-sm shadow-lg"
+      className="relative w-full min-h-[720px] rounded-2xl border border-slate-700/60 bg-slate-900/50 backdrop-blur-sm shadow-lg"
     />
   );
 }
