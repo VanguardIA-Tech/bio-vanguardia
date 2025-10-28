@@ -48,6 +48,44 @@ export function ChatKitEmbed() {
             enabled: true,
           },
         },
+        widgets: {
+          async onAction(action: { type: string; payload?: Record<string, any> }) {
+            console.log("🎯 ChatKit onAction:", action);
+
+            if (action?.type === "send_whatsapp") {
+              const payload = action.payload ?? {};
+              const tour = payload.tour ?? {};
+              const fullName = tour.fullName?.trim?.() || "";
+              const date = tour.date || "";
+              const time = tour.time || "";
+
+              if (!fullName || !date || !time) {
+                toast.error("Preencha nome, data e horário para prosseguir.");
+                return;
+              }
+
+              // Certifique-se de definir NEXT_PUBLIC_BUSINESS_WHATSAPP no seu arquivo .env.local
+              const businessWhatsapp = process.env.NEXT_PUBLIC_BUSINESS_WHATSAPP;
+              if (!businessWhatsapp) {
+                console.error("A variável de ambiente NEXT_PUBLIC_BUSINESS_WHATSAPP não está definida.");
+                toast.error("Configuração de WhatsApp ausente.");
+                return;
+              }
+
+              const message = `Olá! Quero agendar um tour.\nNome: ${fullName}\nData: ${date}\nHorário: ${time}`;
+              const encoded = encodeURIComponent(message);
+              const url = `https://wa.me/${businessWhatsapp}?text=${encoded}`;
+
+              try {
+                window.open(url, "_blank", "noopener,noreferrer");
+                console.log("✅ Link do WhatsApp aberto:", url);
+              } catch (err) {
+                console.error("Erro ao abrir link do WhatsApp:", err);
+                toast.error("Erro ao tentar abrir o WhatsApp.");
+              }
+            }
+          },
+        },
       };
 
       chatEl.setOptions({
@@ -71,7 +109,6 @@ export function ChatKitEmbed() {
               return client_secret;
             } catch (error) {
               console.error("Erro em getClientSecret:", error);
-              toast.error("Erro no Chat: Não foi possível conectar ao servidor.");
               return null;
             }
           },
