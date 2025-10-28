@@ -71,7 +71,7 @@ export function BioSite() {
           />
         ))}
         {/* O componente do chat agora é renderizado aqui diretamente */}
-        <div id="chat-slot" className="w-full max-w-md">
+        <div id="chat-slot" className="w-full max-w-lg">
           <ChatKitEmbed />
         </div>
       </main>
