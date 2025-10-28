@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Script from "next/script";
-import { ChatKitProvider } from "@/components/chatkit-provider";
 import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
@@ -39,7 +38,6 @@ export default function RootLayout({
           {children}
           <Toaster />
         </ThemeProvider>
-        <ChatKitProvider />
         <Script
           src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"
           strategy="afterInteractive"

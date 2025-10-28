@@ -5,6 +5,7 @@ import { Briefcase, Users, Building, Calendar, Lightbulb, ShieldCheck, MessageCi
 import { BioHeader } from "./bio-header";
 import { BioLinkCard } from "./bio-link-card";
 import { BioFooter } from "./bio-footer";
+import { ChatKitEmbed } from "./chatkit-embed";
 
 const bioLinks = [
   {
@@ -69,10 +70,10 @@ export function BioSite() {
             href={link.href}
           />
         ))}
-        {/* This container is used by ChatKit when CHAT_MODE is "embedded" */}
-        
-          <div id="chat-slot" className="w-full max-w-md" style={{ minHeight: 420, borderRadius: 20 }} />
-        
+        {/* O componente do chat agora é renderizado aqui diretamente */}
+        <div id="chat-slot" className="w-full max-w-md">
+          <ChatKitEmbed />
+        </div>
       </main>
       <BioFooter />
     </div>
