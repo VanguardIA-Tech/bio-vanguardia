@@ -19,7 +19,7 @@ export function BioLinkCard({ icon: Icon, title, url, badges, href }: BioLinkCar
       rel="noopener noreferrer"
       className={cn(
         "flex items-center justify-between p-4 rounded-lg border border-blue-500/30 bg-card transition-all duration-500",
-        "w-full max-w-md",
+        "w-full max-w-lg",
         "hover:bg-blue-500/10 hover:border-blue-500",
         "hover:scale-105 transition-transform"
       )}
