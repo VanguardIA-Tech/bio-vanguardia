@@ -48,6 +48,36 @@ export function ChatKitEmbed() {
             enabled: true,
           },
         },
+         widgets: {
+          async onAction(action: { type: string; payload?: Record<string, any> }) {
+            console.log("🎯 ChatKit onAction:", action);
+
+            if (action?.type === "send_whatsapp") {
+              const payload = action.payload ?? {};
+              const tour = payload.tour ?? {};
+              const fullName = tour.fullName?.trim?.() || "";
+              const date = tour.date || "";
+              const time = tour.time || "";
+
+              if (!fullName || !date || !time) {
+                toast.error("Preencha nome, data e horário para prosseguir.");
+                return;
+              }
+
+              const message = `Olá! Quero agendar um tour.\nNome: ${fullName}\nData: ${date}\nHorário: ${time}`;
+              const encoded = encodeURIComponent(message);
+              const url = `https://wa.me/${CFG.BUSINESS_WHATSAPP}?text=${encoded}`;
+
+              try {
+                window.open(url, "_blank", "noopener,noreferrer");
+                console.log("✅ WhatsApp link opened:", url);
+              } catch (err) {
+                console.error("Erro ao abrir link do WhatsApp:", err);
+                toast.error("Erro ao tentar abrir o WhatsApp.");
+              }
+            }
+          },
+        },
       };
 
       chatEl.setOptions({
