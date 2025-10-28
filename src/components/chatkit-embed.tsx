@@ -26,7 +26,7 @@ export function ChatKitEmbed() {
       const chatEl = document.createElement("openai-chatkit") as ChatKitElement;
       chatEl.style.display = "block";
       chatEl.style.width = "100%";
-      chatEl.style.minHeight = "7200px";
+      chatEl.style.minHeight = "720px";
       chatEl.style.borderRadius = "1rem";
       chatEl.style.overflow = "hidden";
       chatEl.style.backgroundColor = "rgba(15, 23, 42, 0.6)";
