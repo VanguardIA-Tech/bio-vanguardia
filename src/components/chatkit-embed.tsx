@@ -10,7 +10,7 @@ interface ChatKitElement extends HTMLElement {
 export function ChatKitEmbed() {
   useEffect(() => {
     const initChatKit = async () => {
-      const workflowId = process.env.NEXT_PUBLIC_OPENAI_WORKFLOW_ID;
+      const workflowId = process.env.NEXT_PUBLIC_OPENAI_WORKFOLW_ID;
 
       if (!workflowId || workflowId === "wf_COLE_SEU_ID_AQUI") {
         console.warn("O WORKFLOW_ID do ChatKit não está configurado. O chat não será inicializado.");
@@ -50,9 +50,15 @@ export function ChatKitEmbed() {
         },
         widgets: {
           async onAction(action: { type: string; payload?: Record<string, any> }) {
-            console.log("🎯 ChatKit onAction:", action);
+            console.log("🎯 ChatKit onAction recebido:", action);
 
-            if (action?.type === "send_whatsapp") {
+            if (action?.type !== "send_whatsapp") {
+              return;
+            }
+
+            let actionResult = null;
+
+            try {
               const payload = action.payload ?? {};
               const tour = payload.tour ?? {};
               const fullName = tour.fullName?.trim?.() || "";
@@ -61,13 +67,12 @@ export function ChatKitEmbed() {
 
               if (!fullName || !date || !time) {
                 toast.error("Preencha nome, data e horário para prosseguir.");
-                // Se a validação falhar, não retorne nada para manter o widget aberto.
-                return;
+                return; // Mantém o widget aberto para correção
               }
 
               const businessWhatsapp = process.env.NEXT_PUBLIC_BUSINESS_WHATSAPP;
               if (!businessWhatsapp) {
-                console.error("A variável de ambiente NEXT_PUBLIC_BUSINESS_WHATSAPP não está definida.");
+                console.error("Variável de ambiente NEXT_PUBLIC_BUSINESS_WHATSAPP não definida.");
                 toast.error("Configuração de WhatsApp ausente.");
                 return;
               }
@@ -76,21 +81,22 @@ export function ChatKitEmbed() {
               const encoded = encodeURIComponent(message);
               const url = `https://wa.me/${businessWhatsapp}?text=${encoded}`;
 
-              try {
-                window.open(url, "_blank", "noopener,noreferrer");
-                console.log("✅ Link do WhatsApp aberto:", url);
+              console.log("Tentando abrir o link do WhatsApp...");
+              window.open(url, "_blank", "noopener,noreferrer");
+              toast.success("Agendamento enviado! Verifique a nova aba do WhatsApp.");
+              console.log("✅ Link do WhatsApp aberto com sucesso.");
 
-                // **A CORREÇÃO ESTÁ AQUI**
-                // Após o sucesso, retorne uma ação para o ChatKit.
-                return { type: 'widget.close' };
-
-              } catch (err) {
-                console.error("Erro ao abrir link do WhatsApp:", err);
-                toast.error("Erro ao tentar abrir o WhatsApp.");
-                // Em caso de erro, você também pode optar por manter o widget aberto.
-                return;
-              }
+            } catch (err) {
+              console.error("❌ Erro ao executar a ação do widget:", err);
+              toast.error("Não foi possível abrir o WhatsApp. Verifique se há um bloqueador de pop-up.");
+            } finally {
+              // Este bloco será executado SEMPRE, garantindo que o widget seja fechado.
+              console.log("Bloco finally: preparando para fechar o widget.");
+              actionResult = { type: 'widget.close' };
             }
+
+            console.log("Retornando ação para o ChatKit:", actionResult);
+            return actionResult;
           },
         },
       };
