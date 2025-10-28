@@ -61,10 +61,10 @@ export function ChatKitEmbed() {
 
               if (!fullName || !date || !time) {
                 toast.error("Preencha nome, data e horário para prosseguir.");
+                // Se a validação falhar, não retorne nada para manter o widget aberto.
                 return;
               }
 
-              // Certifique-se de definir NEXT_PUBLIC_BUSINESS_WHATSAPP no seu arquivo .env.local
               const businessWhatsapp = process.env.NEXT_PUBLIC_BUSINESS_WHATSAPP;
               if (!businessWhatsapp) {
                 console.error("A variável de ambiente NEXT_PUBLIC_BUSINESS_WHATSAPP não está definida.");
@@ -79,9 +79,16 @@ export function ChatKitEmbed() {
               try {
                 window.open(url, "_blank", "noopener,noreferrer");
                 console.log("✅ Link do WhatsApp aberto:", url);
+
+                // **A CORREÇÃO ESTÁ AQUI**
+                // Após o sucesso, retorne uma ação para o ChatKit.
+                return { type: 'widget.close' };
+
               } catch (err) {
                 console.error("Erro ao abrir link do WhatsApp:", err);
                 toast.error("Erro ao tentar abrir o WhatsApp.");
+                // Em caso de erro, você também pode optar por manter o widget aberto.
+                return;
               }
             }
           },
